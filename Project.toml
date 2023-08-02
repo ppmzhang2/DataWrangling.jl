@@ -1,0 +1,12 @@
+name = "DataWrangling"
+uuid = "bd8938b6-eeae-40c5-8e36-8da06c92b83b"
+authors = ["ZHANG, Meng <stall-breezes.0t@icloud.com>"]
+version = "0.1.0"
+
+[deps]
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+DataFramesMeta = "1313f7d8-7da2-5740-9ea0-a2ca25f37964"
+IndexedTables = "6deec6e2-d858-57c5-ab9b-e6ca5bd20e43"
+Query = "1a8c2f83-1ff3-5112-b086-8aa67b057ba1"
+VegaDatasets = "0ae4a718-28b7-58ec-9efb-cded64d6d5b4"
+VegaLite = "112f6efa-9a02-5b7d-90c0-432ed331239a"
