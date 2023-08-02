@@ -2,6 +2,14 @@
 
 ## Environment Setup
 
+Activating environment:
+
 ```julia
-activate DataWrangling.jl
+using Pkg; Pkg.activate("DataWrangling.jl")
+```
+
+Notebook development:
+
+```jl
+using Pluto; Pluto.run()
 ```
