@@ -19,7 +19,8 @@ md"""
 
 ## Dataframe Package
 
-The package `DataFrame` provides a version of the dataframe data structure which is fairly similar to the `R/tidyverse` dataframe.  
+The package `DataFrame` provides a version of the dataframe data structure
+which is fairly similar to the `R/tidyverse` dataframe.  
 Let's build a dataframe!
 """
 
@@ -31,8 +32,11 @@ Let's build a dataframe!
 
 # ╔═╡ f20cfa8c-a063-46d0-ae63-373c45cfe015
 md"""
-And we can extract some of the columns from the dataframe by calling their names.  
-Julia has a special way of writing "symbols", things as the column names: we prepend a : to the name itself. Thus:
+And we can extract some of the columns from the dataframe by calling their
+names.  
+Julia has a special way of writing "symbols", things as the column names:
+we prepend a : to the name itself.
+Thus:
 """
 
 # ╔═╡ 84625e24-2576-4898-ad1f-c369944009f1
@@ -93,7 +97,8 @@ flights = dataset("flights-3m") # dataset() is pretty much what data() is in R
 
 # ╔═╡ 9730f302-cc28-4e72-8627-9ebb534581c9
 md"""
-If we take a look at the `typeof()` of `movies`, we see that is not properly a dataframe:
+If we take a look at the `typeof()` of `movies`, we see that is not properly a
+dataframe:
 """
 
 # ╔═╡ 96671cdd-2ae8-4c28-903c-8ab5abf94717
@@ -101,7 +106,9 @@ typeof(flights)
 
 # ╔═╡ c3ccca26-0808-4988-9707-11bb78ff6230
 md"""
-It's a VegaDataset. We can transform it in a dataframe using a function in the `DataFrames` package:
+It's a VegaDataset.
+We can transform it in a dataframe using a function in the `DataFrames`
+package:
 """
 
 # ╔═╡ ea922139-b5b0-47e9-9a8f-1aaf053ac888
