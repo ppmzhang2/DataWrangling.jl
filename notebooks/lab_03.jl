@@ -17,7 +17,8 @@ md"""
 
 # ╔═╡ f9fd43f6-ba16-4b6f-bf03-a8133b977d74
 md"""
-Let's try our hand on "disasters", a dataframe from the VegaDatasets collection.
+Let's try our hand on "disasters", a dataframe from the VegaDatasets
+collection.
 """
 
 # ╔═╡ fd9a575f-4763-45c5-ae6d-3306f7b54672
@@ -34,7 +35,8 @@ dissd |> describe
 
 # ╔═╡ 16835fab-46b2-438c-b7ed-9fd272ba8b72
 md"""
-"All natural disasters" seems to be a _summary_ of the other entities. Let's filter out the rows with `Entity == "All natural disasters"`:
+"All natural disasters" seems to be a _summary_ of the other entities.
+Let's filter out the rows with `Entity == "All natural disasters"`:
 """
 
 # ╔═╡ b8776f55-ae25-4247-828d-7ee50d35fe5f
@@ -63,7 +65,8 @@ combine(groupby(dissd_noall, :Year), :Deaths => sum)
 
 # ╔═╡ b0b08b2a-3f93-42bf-99cf-87438f31a61b
 md"""
-The other approach is by using `aggregate` which will apply one (or more) functions to **all** of the columns of the dataframe.
+The other approach is by using `aggregate` which will apply one (or more)
+functions to **all** of the columns of the dataframe.
 """
 
 # ╔═╡ 19d48171-8839-423d-a0bf-52c5408c337f
@@ -78,9 +81,13 @@ combine(
 
 # ╔═╡ 3f257a65-6869-4e1f-83e3-be788dc2b9e1
 md"""
-As the function is applied over all the columns, some non meaningful `Year_` columns are created.
+As the function is applied over all the columns, some non meaningful `Year_`
+columns are created.
 We need to select them out. We can use `@map` to do that.
-Notice that in this use of `@map` we are not applying any function, but only selecting certain columns an dropping other (_well, actually,_ we are applying the _indicator function_, look it up if you want the maths of it). 
+Notice that in this use of `@map` we are not applying any function, but only
+selecting certain columns an dropping other
+(_well, actually,_ we are applying the _indicator function_, look it up if
+you want the maths of it).
 """
 
 # ╔═╡ feeea522-1b3e-476d-9300-c828fb96af2a
@@ -92,7 +99,9 @@ combine(
 
 # ╔═╡ 1dc15739-cb93-4397-9939-7f7f7765c552
 md"""
-However, `aggregate()` is often too rigid (even if quite performing) because he will apply the function over all the columns, and sometimes that's just not possible:
+However, `aggregate()` is often too rigid (even if quite performing) because he
+will apply the function over all the columns, and sometimes that's just not
+possible:
 """
 
 # ╔═╡ 0dc370a2-0548-41e8-aa4a-c0fce35596dd
@@ -101,8 +110,12 @@ However, `aggregate()` is often too rigid (even if quite performing) because he 
 
 # ╔═╡ 6c5d7b93-8ba9-434f-84a1-47048aefc4f2
 md"""
-Here we are trying to sum over strings (the `:Entity` column) and that's a mistake.
-The library "query" offers us another way of doing this, `@group_by` and `@map`. This approach is similar to what can be done with `by` and `do` but works on a wide variety of data types.
+Here we are trying to sum over strings (the `:Entity` column) and that's a
+mistake.
+The library "query" offers us another way of doing this, `@group_by` and
+`@map`.
+This approach is similar to what can be done with `by` and `do` but works on a
+wide variety of data types.
 """
 
 # ╔═╡ 96995e39-f7d3-40e6-8092-3481c584275a
@@ -111,7 +124,12 @@ dissd_noall |>
 
 # ╔═╡ a8145680-381a-47d3-8704-0519dc52bde9
 md"""
-What happend is that now instead of 1 dataframe where everything is on the same "level" we have a dataframe where one column is the "key" of the group (in this case "Year") and in the other columns each rows contains a dataframe (where Year is equal to the key). Let's see this.  
+What happend is that now instead of 1 dataframe where everything is on the same
+"level" we have a dataframe where one column is the "key" of the group
+(in this case "Year")
+and in the other columns each rows contains a dataframe
+(where Year is equal to the key).
+Let's see this.
 
 First, the key:
 """
@@ -124,7 +142,9 @@ dissd_noall |>
 
 # ╔═╡ 1005ff2c-8439-4ce8-a0d2-e69dbe43095f
 md"""
-And now the rest as well. Notice that although we use the same dot notation, we are actually digging one level deeper (the information is within the dataframe in the row).
+And now the rest as well. Notice that although we use the same dot notation, we
+are actually digging one level deeper
+(the information is within the dataframe in the row).
 """
 
 # ╔═╡ 58a0712a-0355-4c2a-9195-8224ef0088cc
@@ -135,7 +155,8 @@ dissd_noall |>
 
 # ╔═╡ 084deb30-b8d2-4a5a-9bfe-0f79ad77a495
 md"""
-The key is just one number, but the other two columns contain an array in each row.
+The key is just one number, but the other two columns contain an array in each
+row.
 Now that we know where the information is, we can operate on it.
 """
 
@@ -149,7 +170,8 @@ dissd_noall |>
 md"""
 ## Exercises
 
-modify the following code compute the overal total deaths sum over the Years for each Entity.
+modify the following code compute the overal total deaths sum over the Years
+for each Entity.
 """
 
 # ╔═╡ 24bf9ea7-5f7d-43e6-98bc-cdd21fc43a05
@@ -162,7 +184,8 @@ dissd_noall |>
 md"""
 ## Reshaping
 
-The two verbs that allow to go from long to wide dataframes and back are `stack()` and `unstack()`.
+The two verbs that allow to go from long to wide dataframes and back are
+`stack()` and `unstack()`.
 """
 
 # ╔═╡ 23cac9f5-3190-4213-b7d2-995ec404649b
@@ -176,8 +199,10 @@ wide_dissd = unstack(dissd, # the first argument is the dataframe
 md"""
 And, for sure, we can make it long again.
 
-But first we need to find all the names for the "year" variables we just created:  
-`names()` will give us the variable names, and then we say that we do not want the first one (as it is the Entity variable).
+But first we need to find all the names for the "year" variables we just
+created:
+`names()` will give us the variable names, and then we say that we do not want
+the first one (as it is the Entity variable).
 """
 
 # ╔═╡ 7b9f52bb-c43a-46ae-99f3-1493e33187a0
@@ -194,7 +219,7 @@ long_dissd |> describe
 
 # ╔═╡ 0999849a-3a17-418e-89bd-6f2f81799872
 md"""
-The elements of `Year` are of type `Symbol`.  
+The elements of `Year` are of type `Symbol`.
 """
 
 # ╔═╡ e1afbe0d-7d5f-471f-ac87-889429035531
@@ -211,7 +236,8 @@ long_dissd[42, :variable] |> string
 
 # ╔═╡ 200c5947-a602-4975-8c96-3457ff3e898c
 md"""
-Then, we use `Date()` from the packages Dates to convert the string into a proper date.
+Then, we use `Date()` from the packages Dates to convert the string into a
+proper date.
 """
 
 # ╔═╡ 92165aa1-2f3c-4d6f-a6fb-0eeffa6b1bee
@@ -219,9 +245,14 @@ long_dissd[42,:variable] |> string |> Date
 
 # ╔═╡ efc04a5c-b8f6-4de5-ab80-9525abf83d0f
 md"""
-**Wait**, there is yeat another problem: the functions `string()` and `Date()` work on simple values: one Symbol at a time, or one string at a time. They are not built for arrays of values.
+**Wait**, there is yeat another problem: the functions `string()` and `Date()`
+work on simple values: one Symbol at a time, or one string at a time.
+They are not built for arrays of values.
 
-No problem: in Julia there's something call **broadcasting**. To convert a function that works on single elements to a function that works on arrays of elements we just need to put a dot (.) after it. Let's see that in action with `string()`.
+No problem: in Julia there's something call **broadcasting**.
+To convert a function that works on single elements to a function that works on
+arrays of elements we just need to put a dot (.) after it.
+Let's see that in action with `string()`.
 """
 
 # ╔═╡ bfb1a1fc-180d-4f92-9f39-f89211edea62
@@ -231,7 +262,10 @@ string.(long_dissd[!,:variable])
 md"""
 ## Exercises
 
-When we first initialized long_dissd_dates we used the function `copy()`. What is that? What happened to the original long_dissd we copied? Is it still the same?
+When we first initialized long_dissd_dates we used the function `copy()`.
+What is that?
+What happened to the original long_dissd we copied?
+Is it still the same?
 """
 
 # ╔═╡ a0492706-0592-4771-819d-347f9129c0c2
@@ -239,7 +273,10 @@ long_dissd[1, :variable] |> typeof
 
 # ╔═╡ 655605ed-00d3-4a55-8fb8-5ca7ddc4a09c
 md"""
-Uh, yes, all fine here: we worked on the copy, not the original, so it is as we expected. Now, let's try again by doing something different (that is assigning with `=` without using `copy()`):
+Uh, yes, all fine here: we worked on the copy, not the original, so it is as we
+expected.
+Now, let's try again by doing something different
+(that is assigning with `=` without using `copy()`):
 """
 
 # ╔═╡ 2a9691e1-0112-476e-8d6a-4dd8adbdbf4f
@@ -254,7 +291,8 @@ long_dissd_dates[!,:variable] = Date.(string.(long_dissd_dates[!,:variable]))
 md"""
 ## Join
 
-The joining in Julia is standard (ie not at all dissimilar from the joining on R).
+The joining in Julia is standard (ie not at all dissimilar from the joining on
+R).
 
 We will use an example offered in this
 [tutorial](https://juliabox.com/notebook/notebooks/tutorials/intro-to-julia-DataFrames/08_joins.ipynb)

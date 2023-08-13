@@ -16,6 +16,7 @@ md"""
 - [Lab 2. DataFrame](./lab_02.html)
 - [Lab 3. Aggregation](./lab_03.html)
 - [Lab 4. Comma](./lab_04.html)
+- [Lab 5. String and Dates](./lab_05.html)
 """
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001

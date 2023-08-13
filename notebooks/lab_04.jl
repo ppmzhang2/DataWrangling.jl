@@ -100,24 +100,34 @@ cars |>
 md"""
 ## beyond csv
 
-`load()` is able to load a bunch of different formats: csv and excel files, but also SPSS, Stat and SAS files. And more. 
+`load()` is able to load a bunch of different formats: csv and excel files, but
+also SPSS, Stat and SAS files.
+And more. 
 
-For the time being, `save()` is more limited and can save in csv and two special formats (feather and bedgraph).
+For the time being, `save()` is more limited and can save in csv and two
+special formats (feather and bedgraph).
 
-For more details see here: http://www.david-anthoff.com/jl4ds/stable/fileio/#The-load-and-save-function-1
+For more details see
+[here](http://www.david-anthoff.com/jl4ds/stable/fileio/#The-load-and-save-function-1).
 
 ## Complicated csvs
 
-If you find some nasty and complicated csv, which `load()` are not able to handle, the way out is using the dedicated package [CSV](http://juliadata.github.io/CSV.jl/stable/index.html#High-level-interface-1).
+If you find some nasty and complicated csv, which `load()` are not able to
+handle, the way out is using the dedicated package
+[CSV](http://juliadata.github.io/CSV.jl/stable/index.html#High-level-interface-1).
 
-The main functions here are `CSV.write()` to write a csv, `CSV.read()` to read a csv, and `CSV.validate()` to get information about why the reading of a csv file fails.
+The main functions here are `CSV.write()` to write a csv, `CSV.read()` to read
+a csv, and `CSV.validate()` to get information about why the reading of a csv
+file fails.
 """
 
 # ╔═╡ 623907a1-2b03-468e-af64-cdc9423593ed
 md"""
 ## Excelles
 
-Julia handles excel files in a similar way that `readxl` in R does. The package in this case is `ExcelFiles` (see: https://github.com/queryverse/ExcelFiles.jl ).
+Julia handles excel files in a similar way that `readxl` in R does.
+The package in this case is `ExcelFiles`
+(see: https://github.com/queryverse/ExcelFiles.jl).
 
 The main functions here are named similary to the CSV package.
 """
@@ -126,7 +136,9 @@ The main functions here are named similary to the CSV package.
 md"""
 ## Your turn
 
-Load a dataset from VegaDataset (e.g., `dataset("iris")`), do some wrangling, and write it to disk as a csv. Then read it back
+Load a dataset from VegaDataset (e.g., `dataset("iris")`), do some wrangling,
+and write it to disk as a csv.
+Then read it back.
 """
 
 # ╔═╡ 065d28cf-b6be-4b67-adb5-054352e7180a
